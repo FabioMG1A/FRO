@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  font-family: serif;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+nav {
+  background-color: #404040;
+  color: lightgrey;
+}
+
+.menu-toggle {
+  background: #000;
+  cursor: pointer;
+  padding: 1em;
+  display: block;
+  text-align: right;
+}
+
+#menuToggle {
+  display: none;
+}
+
+#menuToggle:checked ~ ul a {
+  /* Breng de eigenschappen van het menu terug als #menuToggle gecheckt is */
+  font-size: 1em;
+  height: 1em;
+  line-height: 1em;
+  transform: scale3d()(1);
+  border-bottom: 1px solid lightgrey;
+}
+
+#menuToggle:checked ~ .menu-toggle .fa-times {
+  display: block;
+}
+
+#menuToggle:checked ~ .menu-toggle .fa-list-ul {
+  display: none;
+}
+
+/* het menu verbergen */
+.fa-times {
+  display: none;
+}
+
+/* DEZE CODE IS VAN FABIO */
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  display: block;
+  color: lightgrey;
+  text-decoration: none;
+  padding: 1em;
+  /* verberg het menu */
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  transform: scale3d(0);
+  transition: all 0.5s ease-in-out;
+  border-bottom: 0px solid lightgrey;
+}
+
+/* DEZE CODE IS VAN FABIO */
+
+nav a:hover{
+  color: #fff;
+  background: #000;
+}
+
+.submenu_fabio ul {
+  padding-left: .5em;
+  border-left: 5px double lightgrey;
+}
+
+#nav .submenu_fabio li a {
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  transform: scaleY(0);
+  border-bottom-width: 0;
+  transition: all .5s ease-out;
+}
+
+#nav .submenu_fabio:hover li a {
+  font-size: 1em;
+  height: 1em;
+  line-height: 1em;
+  transform: scaleY(1);
+  border-bottom-width: 0;
+}
+
+.submenu_fabio > a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.submenu_fabio > a::after {
+  font-family: "Font Awesome\ 5 Free";
+  font-weight: 900;
+  content: "\f0d7";
+}
+
+.submenu_fabio:hover > a::after {
+  content: "\f150";
+}
+
+/* DEZE CODE IS VAN FABIO */
+
+main {
+  padding: 1em;
+}
+
+main img {
+  max-width: 100%;
+}
+
+footer {
+  padding: 1em;
+  background: #404040;
+  color: lightgrey;
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+/* Opmaak bredere viewport */
+@media screen and (min-width:40em) {
+  nav>ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+  }
+
+  /* toggel-label verwijderen */
+  .menu-toggle {
+    display: none;
+  }
+
+  /* DEZE CODE IS VAN FABIO */
+
+  nav a {
+    font-size:1em;
+    height: 1em;
+    line-height: 1em;
+    transform: scaleY(1);
+  }
+
+  .submenu_fabio {
+    position: absolute;
+  }
+
+  .submenu_fabio ul {
+    position: absolute;
+    border-left: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .submenu_fabio a {
+    background-color: #404040;
+  }
+/* een lijntje links van de items van het hoofdmenu, behalve de eerste */
+ nav>ul>li:not(:not(:first-child) a) {
+   border-left: 10px solid lightgrey;
+ }
+}
